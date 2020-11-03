@@ -1,0 +1,1 @@
+If a js file is updated, the browser doesnt see it as it caches the js and css files. You need to clear the cache to see the updated files.

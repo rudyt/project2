@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script defer src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Flack</title>
+    </head>
+    <body>
+        <div id = "error-container"></div>
+        <h1 id="displayname">Please fill in your username in the box and click Join to join the chat</h1>
+        <h2 id="chatcontinue"></h2>
+
+        
+
+        
+        <div id="newmsg"></div>
+        <p></p>
+        <form class="cruser" id="cruser">
+            <input id="name" autocomplete="off" autofocus placeholder="Your display name" type="text" data-user="user">
+        </form>
+        <button class="cruser" id="uscreate" type="submit" name="btn" value="Join" onclick="setUsername()">Join</button>
+        
+
+        <form class="message" id="message">
+            <textarea id="textmsg" autocomplete="off" autofocus placeholder="Your message" type="text" data-msg="msg" style="font-size:12pt;height:200px;width:420px;"></textarea>
+        </form>
+        <button class="message" id="sendmsg" type="submit" name="msg_btn" value="Send" onclick="sendMessage()">Send Message</button>
+
+        <h3 id="prompt"></h3>
+        <form class="crchannel" id="crchannel">
+            <input id="chname" autocomplete="off" autofocus placeholder="Your channel name" type="text" data-chan="chan">
+        </form>
+        <button class="crchannel" id="chcreate" type="submit" name="ch_btn" value="Submit" onclick="setChannel()">Create Channel</button>
+        <p id="chsuggest"></p>
+        <ul id="channels">
+            {% for ch in channelsdict.keys() %}
+               <li>
+                    <a href="{{url_for('viewchannel',channel=ch)}}">
+                        {{ch}}
+                    </a>
+               </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

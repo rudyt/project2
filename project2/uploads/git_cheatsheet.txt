@@ -1,0 +1,9 @@
+git init
+git status
+git add *
+git commit -m "message"
+git remote add project1 https://github.com/rudyt/project1
+git push --set-upstream project1 master
+git log --oneline
+git checkout e6548fd book.html
+ git checkout -- templates/signin.html   (this will checkout HEAD version of signin)

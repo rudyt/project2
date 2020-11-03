@@ -1,0 +1,58 @@
+
+---------------
+
+
+Have to use javascript for the fb logout. There may be many clients open and we want to do the fb logout
+ and delete the cookie in only the client we want to logout from, not every client that is logged on.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+aim small miss small------Review code everyday morning, else lose track and take 1 week to get back to which
+problem I was solving. Like I lost track that I need to implement logout from facebook function.
+
+Implement Logout from Facebook button feature. -----
+
+From facebook, get handle from access token and put info in database. like name age. 
+Add to UserData table in facebook_user.aspx.cs
+
+Remove userid from table. Have an extra column for facebookID and default it to NULL. If not NULL, 
+it is facebook user.
+
+After first login, check if facebook ID already in table. If not, he is logging in first time.--msg = welcome back

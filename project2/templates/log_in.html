@@ -1,0 +1,11 @@
+
+{%extends 'layout.html' %}
+
+ {% block content %} 
+ <h5>{{ text1 }}</h5>  
+<script src="{{ url_for('static',filename='js/logincheck.js') }}"></script>
+    <form action="/login" method="POST">
+        <input id="username" name="username" placeholder="Display Name" autofocus autocomplete="off" type="text" required>
+        <button type="submit" name="btn" >Log In</button>
+    </form>
+{% endblock %}

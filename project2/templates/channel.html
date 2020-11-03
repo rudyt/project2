@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Flack</title>
+    </head>
+    <body>
+        <form class="message" id="message">
+            <textarea id="textmsg" autocomplete="off" autofocus placeholder="Your message" type="text" data-msg="msg" style="font-size:12pt;height:200px;width:420px;"></textarea>
+        </form>
+        <button class="message" id="sendmsg" type="submit" name="msg_btn" onclick="sendMessage()">Send Message</button>
+
+        <ul id="channels">
+            {% for ch in channel %}
+               <li>
+                    {{ch}}
+               </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+ 150  cd "Visual Studio 2013"
+  151  pwd
+  152  cd Websites
+  153  ls
+  154  git push origin master
+  155  cd LoginPage
+  156  git status -s
+  157  git commit -a -m "Added FB login button 02142016"
+  158  git status -s
+  159  git push origin master
+  160  pwd
+  161  cd ..
+  162  git status -s
+  163  git commit -a -m "Added FB login button 02142016"
+  164  git push origin master
+  165  pwd
+  166  cd ../My Documents
+  167  cd ../My\ Documents/
+  168  ls
+  169  cd Visual\ Studio\ 2013
+  170  ls
+  171  cd WebSites/WebSites2
+  172  cd WebSites/
+  173  ls
+  174  cd Loginpage
+  175  ls
+  176  git push   Master
+  177  git br
+  178  git branch
+  179  git log
+  180  git push master
+  181  git commit
+  182  git add *
+  183  vi history.txt
+  184  git status
+  185  git status -s
+  186  git commit
+  187  git push
+  188  git push master
+  189  git push --set-upstream master master
+  190  vi history.txt
+  191   git push origin master:master
+  192  exit
+  193  ls
+  194  h
+  195  history
+
+do git commit and git push master:master from /c/Users/aniruddha/My Documents/Visual Studio 2013/WebSites
+It will checkin all my projects under it.
+git password: mo*3

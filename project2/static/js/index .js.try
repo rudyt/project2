@@ -1,0 +1,69 @@
+            document.addEventListener('DOMContentLoaded', () => {
+            //Check if localstorage already has displayname
+                //if (localStorage.getItem('displayname')) {
+                  // document.getElementsByClassName('form')[0].style.visibility='hidden'; 
+                   //document.getElementById("chname").style.visibility="hidden";
+                   //document.getElementById("chcreate").style.visibility="hidden";
+                   document.getElementById("crchannel").style.visibility="hidden";
+                   var y = localStorage.getItem('displayname');
+                   document.querySelector('#displayname').innerHTML="Hello Again "+y;
+                //};
+
+                //create channel section start
+                //Hide cr_channel form if user not signedin
+                //if (localStorage.getItem('displayname')) {
+                   //document.getElementsByClassName('cr_channel')[0].style.visibility='hidden';
+                   //document.getElementsById("cr_channel").style.display='block'; 
+                //};
+                // By default, submit button is disabled
+                document.querySelector('#chcreate').disabled = true;
+
+                // Enable button only if there is text in the input field
+                document.querySelector('#ch_name').onkeyup = () => {
+                    if (document.querySelector('#chname').value.length > 0)
+                        document.querySelector('#chcreate').disabled = false;
+                    else
+                        document.querySelector('#chcreate').disabled = true;
+                };
+                //create channel section end
+
+            // By default, submit button is disabled
+                document.querySelector('#submit').disabled = true;
+
+                // Enable button only if there is text in the input field
+                document.querySelector('#name').onkeyup = () => {
+                    if (document.querySelector('#name').value.length > 0)
+                        document.querySelector('#submit').disabled = false;
+                    else
+                        document.querySelector('#submit').disabled = true;
+                };
+               
+            // get display name when submit button is clicked
+                document.querySelector('#chatjoin').onsubmit = () => {
+                    document.getElementsByClassName('form')[0].style.visibility='hidden';
+                    // Stop form from submitting
+                    return false;
+                };
+/////////////Socket starts below
+            // Connect to websocket
+                var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+            // When connected, configure buttons
+                socket.on('connect', () => {
+
+             // Each button should emit a "submit vote" event
+                document.querySelectorAll('button').forEach(button => {
+                button.onclick = () => {
+                const selection = button.dataset.vote;
+                socket.emit('submit vote', {'selection': selection});
+                        };
+                    });
+                });
+
+    // When a new vote is announced, add to the unordered list
+        socket.on('vote totals', data => {
+            document.querySelector('#yes').innerHTML = data.yes;
+            document.querySelector('#no').innerHTML = data.no;
+            document.querySelector('#maybe').innerHTML = data.maybe;
+        });
+
+    });

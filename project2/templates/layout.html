@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="{{ url_for('static',filename='js/jquery.min.js') }}" ></script>
+        <script src=" {{ url_for('static',filename='js/bootstrap.min.js') }} "></script>
+        <title>Flack</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+     <!-- Links  -->
+        <link href="{{ url_for('static',filename='css/sketchybootstrap.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ url_for('static',filename='img/Chat.ico') }}" rel="icon" type="img/jpeg" media="screen" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .navbar-nav {
+          display: inline;
+        }
+        </style>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar">
+        <script>
+        function logout () {
+            ///////// Connect to websocket
+            //RT1101
+            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+            username=localStorage.getItem('username');
+            channel=localStorage.getItem('channel');
+            socket.emit('user disconnected',{'username':username,'channel':channel});
+            //RT1101
+            localStorage.removeItem('username');
+            localStorage.removeItem('channel');
+        }
+        </script> 
+
+      <div class="collapse navbar-collapse" id="navcol-1">
+        <ul class="nav navbar-nav ml-auto">
+            <i class='fas fa-comment' style='font-size:48px;color:red'>
+                Flack
+            </i>
+            <button class="btn"><a class="nav-link" href="/"><i class="fa fa-home"></i> Home</button>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="/">Login</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" onclick="logout()" href="/">Log out</a></li>
+        </ul>
+      </div>  
+    </nav>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+    </body>
+</html>
