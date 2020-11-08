@@ -154,5 +154,5 @@ def pvtmsg(data):
         emit('pvt msg done',data, broadcast=True)
     else:
         emit('pvt msg offline',data)
-
-app.run(host='127.0.0.1', port=5000)
+app.run()
+#app.run(host='127.0.0.1', port=5000)
